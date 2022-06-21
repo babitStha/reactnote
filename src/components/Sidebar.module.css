@@ -1,0 +1,35 @@
+.sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+    background-color: #7cc010;
+    font-family: fancy;
+    width:30vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #271a5f;
+}
+.sidebar-header{
+    margin: 20px 0px;
+    font-size: 1.5rem;
+    font-weight: bold;  
+}
+.sidebar-body{
+    width:100%;
+}
+.note{
+    padding:10px 20px;
+    font-family: monospace;
+    background-color:white;
+    color: #150c41;
+    cursor:pointer;
+}
+.note:hover{
+    background-color: #808080a6;
+}
+.note-unread{
+    font-weight: 900;
+    font-size: 1.05rem;
+}

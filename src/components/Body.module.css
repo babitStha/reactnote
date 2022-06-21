@@ -1,0 +1,15 @@
+.main{
+    margin-left:30vw;
+    padding: 20px; 
+}
+.body{
+    display:flex;
+    flex-wrap: wrap;
+}
+.note{
+    width:300px;
+    padding: 20px;
+    background-color:ghostwhite ;
+    margin: 5px;
+    cursor: pointer;
+}

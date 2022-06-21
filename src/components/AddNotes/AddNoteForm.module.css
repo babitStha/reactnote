@@ -1,0 +1,23 @@
+.invalid{
+    
+    outline: 2px dashed blue;
+
+}
+form{
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    min-height: 200px;
+}
+.label, input{
+    display: block;
+    
+}
+#body{
+    min-height: 50px;
+    height: auto;
+    background-color: blue;
+}
