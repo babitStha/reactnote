@@ -13,25 +13,27 @@ const NoteContextProvider = (props) => {
         }
         console.log(updated)
         setNotes(prevnote => {
-            return [updated, ...notes]
+            return [updated, ...prevnote]
         })
+        console.log(notes)
     }
     const removeNote = (id) => {
         const filtered = notes.filter(note => note.id !== id)
         setNotes(filtered)
     }
     const editNote = (id, newNote) => {
-        const objIndex = notes.findIndex((obj => obj.id === id));
+        const objIndex = notes.findIndex((obj => obj.id === id))
         notes[objIndex].title = newNote.title
         notes[objIndex].body = newNote.body
 
     }
     const setRead = (id) => {
-
-        setNotes(prevnotes => {
-            const objIndex = prevnotes.findIndex((obj => obj.id === id));
-            console.log(prevnotes[objIndex])
-        })
+        let tempNote = notes
+        const objIndex = tempNote.findIndex(note => note.id === id)
+        tempNote[objIndex].isRead = true
+        setNotes(tempNote)
+        console.log(tempNote[objIndex]) 
+        
     }
     const data = {
         notes,
