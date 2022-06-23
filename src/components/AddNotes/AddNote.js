@@ -1,9 +1,19 @@
-import React from 'react'
-import AddNoteForm from './AddNoteForm'
+import React, {useContext} from 'react'
+import Form from './Form'
+import NoteContext from '../../store/NoteContext'
 const AddNote = () => {
+  const noteCntx = useContext(NoteContext)
+  const addToContext =(body, title) =>{
+    noteCntx.addNote({
+        title,
+        body,
+        isRead:false
+    })
+    
+}
   return (
     <React.Fragment>
-        <AddNoteForm />
+        <Form onSubmit={addToContext}/>
     </React.Fragment>
   )
 }

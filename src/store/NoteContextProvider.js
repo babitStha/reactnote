@@ -1,10 +1,17 @@
 import NoteContext from './NoteContext'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const NoteContextProvider = (props) => {
-    const [notes, setNotes] = useState([])
+    const [notes, setNotes] = useState(()=>{
+        const data = localStorage.getItem('notes')
+        return data ? JSON.parse(data) : []
+    })
 
+    useEffect(()=>{
+        localStorage.setItem('notes', JSON.stringify(notes));
+    },[notes])
+        
     const addNote = note => {
         const updated = {
             id: Date.now(),
@@ -22,18 +29,21 @@ const NoteContextProvider = (props) => {
         setNotes(filtered)
     }
     const editNote = (id, newNote) => {
-        const objIndex = notes.findIndex((obj => obj.id === id))
-        notes[objIndex].title = newNote.title
-        notes[objIndex].body = newNote.body
+        const data = [...notes]
+        const objIndex = data.findIndex((obj => obj.id === id));
+        data[objIndex].title = newNote.title
+        data[objIndex].body = newNote.body
+        setNotes(data)
 
     }
     const setRead = (id) => {
-        let tempNote = notes
-        const objIndex = tempNote.findIndex(note => note.id === id)
-        tempNote[objIndex].isRead = true
-        setNotes(tempNote)
-        console.log(tempNote[objIndex]) 
-        
+        const updatedNote = notes.map(note => {
+            if (note.id === id) {
+                note.isRead = true
+            }
+            return note
+        })
+        setNotes(updatedNote)
     }
     const data = {
         notes,
